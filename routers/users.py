@@ -5,7 +5,7 @@ import uvicorn
 #uvicorn main:app --reload
 router = APIRouter(prefix="/users",
                    tags=["users"],
-                   )
+                   responses={404: {"message":"No encontrado"}})
 
 class User(BaseModel):
     id: int
@@ -17,7 +17,7 @@ users_list = [User(id=0, name="Ignacio", surname="Etchepare", age="30"),
              User(id=1, name="Testeo", surname="Prueba", age="15")]
 
 #All user
-@router.get("/users")
+@router.get("/")
 async def users():
     return users_list
 
