@@ -5,7 +5,7 @@ import uvicorn
 #uvicorn main:app --reload
 router = APIRouter(prefix="/users",
                    tags=["users"],
-                   responses={404: {"message":"No encontrado"}})
+                   )
 
 class User(BaseModel):
     id: int
@@ -31,6 +31,7 @@ async def user(id: int):
 @router.get("/userquery")
 async def user(id: int):
    return search_user(id)
+    
     
 
 #POST 
